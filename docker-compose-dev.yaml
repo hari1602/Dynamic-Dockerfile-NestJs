@@ -1,0 +1,27 @@
+version: "3"
+services:
+  first-app:
+    container_name: first-app
+    build:
+      context: .
+      target: development
+    command: pnpm run start:dev first-app
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3000:3000'
+  second-app:
+    container_name: second-app
+    build:
+      context: .
+      target: development
+    command: pnpm run start:dev second-app
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3001:3000'
+volumes:
+  db:
+    driver: local

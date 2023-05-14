@@ -1,0 +1,20 @@
+version: "3"
+services:
+  first-app:
+    container_name: first-app
+    build:
+      context: .
+      args:
+        - APP=first-app
+    restart: always
+    ports:
+      - 3000:3000
+  second-app:
+    container_name: second-app
+    build:
+      context: .
+      args:
+        - APP=second-app
+    restart: always
+    ports:
+      - 3001:3000
